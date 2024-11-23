@@ -15,20 +15,21 @@ title D1amond.fix MSI Tool
 color 5F
 mode con: cols=80 lines=25
 
-:: Disable scrolling
-for /F "tokens=2 delims=:" %%a in ('mode con') do set "lines=%%a"
+:: Disable scrolling for
+/F "tokens=2 delims=:" %%a in ('mode con') do set "lines=%%a"
 mode con: lines=%lines%
 
 :main
 cls
+
 :: Display banner
 echo.
-echo ██████╗  ██╗ █████╗ ███╗   ███╗ ██████╗ ███╗   ██╗██████╗   
-echo ██╔══██╗███║██╔══██╗████╗ ████║██╔═══██╗████╗  ██║██╔══██╗  
-echo ██║  ██║╚██║███████║██╔████╔██║██║   ██║██╔██╗ ██║██║  ██║  
-echo ██║  ██║ ██║██╔══██║██║╚██╔╝██║██║   ██║██║╚██╗██║██║  ██║  
-echo ██████╔╝ ██║██║  ██║██║ ╚═╝ ██║╚██████╔╝██║ ╚████║██████╔╝  
-echo ╚═════╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝   
+echo ██████╗  ██╗ █████╗ ███╗   ███╗ ██████╗ ███╗   ██╗██████╗
+echo ██╔══██╗███║██╔══██╗████╗ ████║██╔═══██╗████╗  ██║██╔══██╗
+echo ██║  ██║╚██║███████║██╔████╔██║██║   ██║██╔██╗ ██║██║  ██║
+echo ██║  ██║ ██║██╔══██║██║╚██╔╝██║██║   ██║██║╚██╗██║██║  ██║
+echo ██████╔╝ ██║██║  ██║██║ ╚═╝ ██║╚██████╔╝██║ ╚████║██████╔╝
+echo ╚═════╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝
 echo ------------------------------------------------------------
 echo                   Welcome to D1amond.fix
 echo            Your ultimate MSI installation fixer
@@ -48,6 +49,7 @@ goto main
 cls
 echo Applying MSI Fix...
 echo.
+
 :: Apply permissions for ALL APPLICATION PACKAGES
 icacls "C:\Windows\Temp" /grant "ALL APPLICATION PACKAGES:(OI)(CI)F" /T /C >nul 2>&1
 if %errorlevel%==0 (
@@ -66,6 +68,10 @@ if %errorlevel%==0 (
 
 echo.
 echo MSI Fix applied successfully!
+
+:: Open D1amond.lol website
+start https://d1amond.lol
+
 pause >nul
 goto main
 
